@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bluestock - Careers</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8fafc;
+    }
+
+    /* Header Section - Your provided code with minor enhancements */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 30px;
+      background-color: white;
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+     .logo {
+      display: flex;
+      align-items: center;
+    }
+    .logo img {
+      height: 30px;
+      margin-right: 10px;
+    }
+
+    .nav {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+      font-size: 14px;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #374151;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav a:hover {
+      color: #4f46e5;
+    }
+
+    .new-tag {
+      background-color: #4f46e5;
+      color: white;
+      font-size: 10px;
+      padding: 2px 5px;
+      border-radius: 4px;
+      margin-left: 5px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    .auth {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .auth a {
+      text-decoration: none;
+      color: #374151;
+      font-weight: 500;
+    }
+
+    .signup-btn {
+      background-color: #4f46e5;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .signup-btn:hover {
+      background-color: #4338ca;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+    }
+
+    .menu-icon {
+      font-size: 20px;
+      cursor: pointer;
+      color: #374151;
+    }
+
+    /* Main Content */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      min-height: calc(100vh - 80px);
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      padding: 20px 40px;
+      color: #6b7280;
+      font-size: 14px;
+      background: white;
+    }
+
+    .breadcrumb a {
+      color: #4f46e5;
+      text-decoration: none;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 60px 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      background: white;
+    }
+
+    .hero-content h1 {
+      font-size: 48px;
+      font-weight: 700;
+      color: #1f2937;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .hero-content p {
+      font-size: 18px;
+      color: #6b7280;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .cta-button {
+      background-color: #4f46e5;
+      color: white;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .cta-button:hover {
+      background-color: #4338ca;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(79, 70, 229, 0.3);
+    }
+
+    /* Hero Visual */
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 400px;
+    }
+
+    .people-group {
+      position: relative;
+      width: 350px;
+      height: 250px;
+    }
+
+    .person {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .person-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-bottom: 8px;
+      border: 3px solid white;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .person-body {
+      width: 40px;
+      height: 60px;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .person1 {
+      top: 20px;
+      left: 30px;
+      animation-delay: 0s;
+    }
+    .person1 .person-avatar { background: linear-gradient(135deg, #fbbf24, #f59e0b); }
+    .person1 .person-body { background: linear-gradient(135deg, #fef3c7, #fde047); }
+
+    .person2 {
+      top: 80px;
+      left: 120px;
+      animation-delay: 0.5s;
+    }
+    .person2 .person-avatar { background: linear-gradient(135deg, #8b5a2b, #92400e); }
+    .person2 .person-body { background: linear-gradient(135deg, #4f46e5, #6366f1); }
+
+    .person3 {
+      top: 30px;
+      right: 80px;
+      animation-delay: 1s;
+    }
+    .person3 .person-avatar { background: linear-gradient(135deg, #dc2626, #ef4444); }
+    .person3 .person-body { background: linear-gradient(135deg, #10b981, #34d399); }
+
+    .person4 {
+      top: 90px;
+      right: 20px;
+      animation-delay: 1.5s;
+    }
+    .person4 .person-avatar { background: linear-gradient(135deg, #7c3aed, #8b5cf6); }
+    .person4 .person-body { background: linear-gradient(135deg, #3b82f6, #60a5fa); }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+    }
+
+    .growth-arrow {
+      position: absolute;
+      top: -30px;
+      right: -40px;
+      width: 120px;
+      height: 60px;
+      background: linear-gradient(45deg, #10b981, #34d399);
+      clip-path: polygon(0 40%, 70% 0, 70% 25%, 100% 50%, 70% 75%, 70% 100%, 0 60%);
+      animation: arrowPulse 2s ease-in-out infinite;
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    }
+
+    @keyframes arrowPulse {
+      0%, 100% { transform: scale(1) rotate(15deg); }
+      50% { transform: scale(1.1) rotate(15deg); }
+    }
+
+    /* App Promotion Section */
+    .app-section {
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      margin: 40px;
+      border-radius: 20px;
+      padding: 50px;
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 50px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .app-section::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: bgFloat 8s ease-in-out infinite;
+    }
+
+    @keyframes bgFloat {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(-20px, -20px); }
+    }
+
+    .phone-mockup {
+      position: relative;
+      z-index: 2;
+    }
+
+    .phone {
+      width: 220px;
+      height: 450px;
+      background: #1f2937;
+      border-radius: 25px;
+      padding: 15px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      position: relative;
+    }
+
+    .phone-screen {
+      width: 100%;
+      height: 100%;
+      background: white;
+      border-radius: 18px;
+      padding: 20px 15px;
+      font-size: 12px;
+      overflow: hidden;
+    }
+
+    .app-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+
+    .app-logo {
+      width: 20px;
+      height: 20px;
+      background: linear-gradient(45deg, #4f46e5, #7c3aed);
+      border-radius: 4px;
+    }
+
+    .stock-list {
+      margin-top: 15px;
+    }
+
+    .stock-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid #f3f4f6;
+    }
+
+    .stock-name {
+      font-weight: 600;
+      color: #1f2937;
+    }
+
+    .stock-price {
+      font-size: 10px;
+      font-weight: 600;
+    }
+
+    .positive { color: #10b981; }
+    .negative { color: #ef4444; }
+
+    .stock-chart {
+      width: 50px;
+      height: 20px;
+      background: linear-gradient(45deg, #10b981, #34d399);
+      border-radius: 2px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stock-chart.red {
+      background: linear-gradient(45deg, #ef4444, #f87171);
+    }
+
+    .stock-chart::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      animation: shimmer 2s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    .app-content {
+      color: white;
+      position: relative;
+      z-index: 2;
+    }
+
+    .download-stats {
+      font-size: 42px;
+      font-weight: 800;
+      color: #fbbf24;
+      margin-bottom: 15px;
+    }
+
+    .app-content h2 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      line-height: 1.2;
+    }
+
+    .app-content p {
+      font-size: 16px;
+      opacity: 0.9;
+      margin-bottom: 25px;
+    }
+
+    .app-actions {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      margin-top: 25px;
+    }
+
+    .send-link-btn {
+      background: rgba(255,255,255,0.2);
+      color: white;
+      border: 2px solid rgba(255,255,255,0.3);
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .send-link-btn:hover {
+      background: rgba(255,255,255,0.3);
+      transform: translateY(-2px);
+    }
+
+    .download-options {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .qr-code {
+      width: 70px;
+      height: 70px;
+      background: white;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .qr-pattern {
+      width: 50px;
+      height: 50px;
+      background-image: 
+        repeating-linear-gradient(0deg, #000, #000 2px, transparent 2px, transparent 4px),
+        repeating-linear-gradient(90deg, #000, #000 2px, transparent 2px, transparent 4px);
+      opacity: 0.8;
+    }
+
+    .store-btn {
+      background: #000;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 11px;
+      transition: transform 0.3s ease;
+      text-align: center;
+      min-width: 90px;
+    }
+
+    .store-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 40px;
+      color: #6b7280;
+      font-size: 14px;
+      border-top: 1px solid #e5e7eb;
+      background: white;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav {
+        display: none;
+      }
+      
+      .hero, .app-section {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 40px;
+      }
+      
+      .hero-content h1 {
+        font-size: 36px;
+      }
+      
+      .app-section {
+        margin: 20px;
+        padding: 30px;
+      }
+      
+      .people-group {
+        width: 280px;
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <div class="header">
+    <div class="logo">
+    <img src="logo.webp" alt="Bluestock Logo">
+    </div>
+
+    <div class="nav">
+      <a href="#">IPO</a>
+      <a href="#">Community</a>
+      <a href="#">Products ▾</a>
+      <a href="#">Brokers ▾</a>
+      <a href="#">Live News <span class="new-tag">NEW</span></a>
+    </div>
+
+    <div class="auth">
+      <a href="#">Sign In</a>
+      <button class="signup-btn">Sign Up Now</button>
+      <span class="menu-icon">☰</span>
+    </div>
+  </div>
+
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <a href="#">Home</a> > Careers
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Together, Let's Build The Future Of Fintech !</h1>
+        <p>Join Bluestock Fintech to create disruptive fin-tech products, while working from anywhere!</p>
+        <a href="#" class="cta-button">See Job Openings</a>
+      </div>
+      
+      <div class="hero-visual">
+        <div class="people-group">
+          <div class="person person1">
+            <div class="person-avatar"></div>
+            <div class="person-body"></div>
+          </div>
+          <div class="person person2">
+            <div class="person-avatar"></div>
+            <div class="person-body"></div>
+          </div>
+          <div class="person person3">
+            <div class="person-avatar"></div>
+            <div class="person-body"></div>
+          </div>
+          <div class="person person4">
+            <div class="person-avatar"></div>
+            <div class="person-body"></div>
+          </div>
+          <div class="growth-arrow"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- App Promotion Section -->
+    <section class="app-section">
+      <div class="phone-mockup">
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="app-header">
+              <div class="app-logo"></div>
+              <span>BLUESTOCK</span>
+            </div>
+            
+            <div style="color: #6b7280; font-size: 10px; margin-bottom: 5px;">Search</div>
+            <div style="color: #4f46e5; font-size: 11px; margin-bottom: 5px;">Narmada Urea Katha ⚠️</div>
+            <div style="color: #6b7280; font-size: 9px; margin-bottom: 15px;">Logged in Viruby app account</div>
+            
+            <div style="color: #6b7280; font-size: 10px; margin-bottom: 8px;">✓ Market Overview</div>
+            
+            <div class="stock-list">
+              <div class="stock-item">
+                <div>
+                  <div class="stock-name">SENSEX</div>
+                  <div class="stock-price positive">+135.45</div>
+                </div>
+                <div class="stock-chart"></div>
+              </div>
+              
+              <div class="stock-item">
+                <div>
+                  <div class="stock-name">NIFTY 50</div>
+                  <div class="stock-price positive">+41.85</div>
+                </div>
+                <div class="stock-chart"></div>
+              </div>
+              
+              <div class="stock-item">
+                <div>
+                  <div class="stock-name">BANK NIFTY</div>
+                  <div class="stock-price negative">-125.25</div>
+                </div>
+                <div class="stock-chart red"></div>
+              </div>
+            </div>
+            
+            <div style="color: #4f46e5; font-size: 10px; margin-top: 15px;">Market Today</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="app-content">
+        <div class="download-stats">4.4 K+<br>DOWNLOADS</div>
+        
+        <h2>Enjoy Free Learning, Analytics Club</h2>
+        <p>Get the link to download the App</p>
+        
+        <div class="app-actions">
+          <button class="send-link-btn">Send App Link</button>
+        </div>
+        
+        <div class="download-options">
+          <div class="qr-code">
+            <div class="qr-pattern"></div>
+          </div>
+          <a href="#" class="store-btn">
+            GET IT ON<br><strong>Google Play</strong>
+          </a>
+          <a href="#" class="store-btn">
+            Download on the<br><strong>App Store</strong>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p><b>All official communication with the HR team at Bluestock Fintech will be through hr@bluestock.in</b></p>
+    </footer>
+  </div>
+
+</body>
+</html>
